@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as RoleSelectionRouteImport } from './routes/role-selection'
+import { Route as OnboardingProfessionalRouteImport } from './routes/onboarding.professional'
+import { Route as OnboardingYouthRouteImport } from './routes/onboarding.youth'
+import { Route as ProfessionalIndexRouteImport } from './routes/professional.index'
+import { Route as YouthIndexRouteImport } from './routes/youth.index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoleSelectionRoute = RoleSelectionRouteImport.update({
+  id: '/role-selection',
+  path: '/role-selection',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingProfessionalRoute = OnboardingProfessionalRouteImport.update({
+  id: '/onboarding/professional',
+  path: '/onboarding/professional',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingYouthRoute = OnboardingYouthRouteImport.update({
+  id: '/onboarding/youth',
+  path: '/onboarding/youth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfessionalIndexRoute = ProfessionalIndexRouteImport.update({
+  id: '/professional/',
+  path: '/professional/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YouthIndexRoute = YouthIndexRouteImport.update({
+  id: '/youth/',
+  path: '/youth/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/role-selection': typeof RoleSelectionRoute
+  '/onboarding/professional': typeof OnboardingProfessionalRoute
+  '/onboarding/youth': typeof OnboardingYouthRoute
+  '/professional/': typeof ProfessionalIndexRoute
+  '/youth/': typeof YouthIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/role-selection': typeof RoleSelectionRoute
+  '/onboarding/professional': typeof OnboardingProfessionalRoute
+  '/onboarding/youth': typeof OnboardingYouthRoute
+  '/professional': typeof ProfessionalIndexRoute
+  '/youth': typeof YouthIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/role-selection': typeof RoleSelectionRoute
+  '/onboarding/professional': typeof OnboardingProfessionalRoute
+  '/onboarding/youth': typeof OnboardingYouthRoute
+  '/professional/': typeof ProfessionalIndexRoute
+  '/youth/': typeof YouthIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/role-selection'
+    | '/onboarding/professional'
+    | '/onboarding/youth'
+    | '/professional/'
+    | '/youth/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/role-selection'
+    | '/onboarding/professional'
+    | '/onboarding/youth'
+    | '/professional'
+    | '/youth'
+  id:
+    | '__root__'
+    | '/'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/role-selection'
+    | '/onboarding/professional'
+    | '/onboarding/youth'
+    | '/professional/'
+    | '/youth/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
+  LoginRoute: typeof LoginRoute
+  RegisterRoute: typeof RegisterRoute
+  RoleSelectionRoute: typeof RoleSelectionRoute
+  OnboardingProfessionalRoute: typeof OnboardingProfessionalRoute
+  OnboardingYouthRoute: typeof OnboardingYouthRoute
+  ProfessionalIndexRoute: typeof ProfessionalIndexRoute
+  YouthIndexRoute: typeof YouthIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/role-selection': {
+      id: '/role-selection'
+      path: '/role-selection'
+      fullPath: '/role-selection'
+      preLoaderRoute: typeof RoleSelectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding/professional': {
+      id: '/onboarding/professional'
+      path: '/onboarding/professional'
+      fullPath: '/onboarding/professional'
+      preLoaderRoute: typeof OnboardingProfessionalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding/youth': {
+      id: '/onboarding/youth'
+      path: '/onboarding/youth'
+      fullPath: '/onboarding/youth'
+      preLoaderRoute: typeof OnboardingYouthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/professional/': {
+      id: '/professional/'
+      path: '/professional'
+      fullPath: '/professional/'
+      preLoaderRoute: typeof ProfessionalIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/youth/': {
+      id: '/youth/'
+      path: '/youth'
+      fullPath: '/youth/'
+      preLoaderRoute: typeof YouthIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ForgotPasswordRoute: ForgotPasswordRoute,
+  LoginRoute: LoginRoute,
+  RegisterRoute: RegisterRoute,
+  RoleSelectionRoute: RoleSelectionRoute,
+  OnboardingProfessionalRoute: OnboardingProfessionalRoute,
+  OnboardingYouthRoute: OnboardingYouthRoute,
+  ProfessionalIndexRoute: ProfessionalIndexRoute,
+  YouthIndexRoute: YouthIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
