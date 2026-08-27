@@ -27,7 +27,7 @@ export const Route = createFileRoute("/youth/")({
       },
     ],
   }),
-  component: YouthDashboard;
+  component: YouthDashboard,
 });
 
 function YouthDashboard() {
