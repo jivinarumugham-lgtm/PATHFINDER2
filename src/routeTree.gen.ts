@@ -14,6 +14,7 @@ import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as RoleSelectionRouteImport } from './routes/role-selection'
+import { Route as OnboardingProfessionalRouteImport } from './routes/onboarding.professional'
 import { Route as OnboardingYouthRouteImport } from './routes/onboarding.youth'
 
 const IndexRoute = IndexRouteImport.update({
@@ -41,6 +42,11 @@ const RoleSelectionRoute = RoleSelectionRouteImport.update({
   path: '/role-selection',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OnboardingProfessionalRoute = OnboardingProfessionalRouteImport.update({
+  id: '/onboarding/professional',
+  path: '/onboarding/professional',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OnboardingYouthRoute = OnboardingYouthRouteImport.update({
   id: '/onboarding/youth',
   path: '/onboarding/youth',
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/role-selection': typeof RoleSelectionRoute
+  '/onboarding/professional': typeof OnboardingProfessionalRoute
   '/onboarding/youth': typeof OnboardingYouthRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/role-selection': typeof RoleSelectionRoute
+  '/onboarding/professional': typeof OnboardingProfessionalRoute
   '/onboarding/youth': typeof OnboardingYouthRoute
 }
 export interface FileRoutesById {
@@ -70,6 +78,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/role-selection': typeof RoleSelectionRoute
+  '/onboarding/professional': typeof OnboardingProfessionalRoute
   '/onboarding/youth': typeof OnboardingYouthRoute
 }
 export interface FileRouteTypes {
@@ -80,6 +89,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/role-selection'
+    | '/onboarding/professional'
     | '/onboarding/youth'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -88,6 +98,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/role-selection'
+    | '/onboarding/professional'
     | '/onboarding/youth'
   id:
     | '__root__'
@@ -96,6 +107,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/role-selection'
+    | '/onboarding/professional'
     | '/onboarding/youth'
   fileRoutesById: FileRoutesById
 }
@@ -105,6 +117,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
   RoleSelectionRoute: typeof RoleSelectionRoute
+  OnboardingProfessionalRoute: typeof OnboardingProfessionalRoute
   OnboardingYouthRoute: typeof OnboardingYouthRoute
 }
 
@@ -145,6 +158,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RoleSelectionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/onboarding/professional': {
+      id: '/onboarding/professional'
+      path: '/onboarding/professional'
+      fullPath: '/onboarding/professional'
+      preLoaderRoute: typeof OnboardingProfessionalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/onboarding/youth': {
       id: '/onboarding/youth'
       path: '/onboarding/youth'
@@ -161,6 +181,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
   RoleSelectionRoute: RoleSelectionRoute,
+  OnboardingProfessionalRoute: OnboardingProfessionalRoute,
   OnboardingYouthRoute: OnboardingYouthRoute,
 }
 export const routeTree = rootRouteImport
