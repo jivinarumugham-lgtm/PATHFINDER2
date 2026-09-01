@@ -58,8 +58,8 @@ function YouthOnboarding() {
     <OnboardingShell
       step={step}
       totalSteps={TOTAL}
-      title={meta.title}
-      subtitle={meta.subtitle}
+      title={meta?.title ?? ""}
+      subtitle={meta?.subtitle ?? ""}
       onBack={() => setStep((s) => Math.max(1, s - 1))}
       nextLabel={step === TOTAL ? "Finish and open dashboard" : "Continue"}
       onNext={() => {
