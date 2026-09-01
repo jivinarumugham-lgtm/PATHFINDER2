@@ -184,7 +184,7 @@ export function CheckRow({
   onToggle,
 }: {
   label: string;
-  description?: string;
+  description?: string | undefined;
   checked: boolean;
   onToggle: () => void;
 }) {

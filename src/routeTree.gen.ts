@@ -10,18 +10,31 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DiscoveryRouteImport } from './routes/discovery'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as RegisterRouteImport } from './routes/register'
+import { Route as RequestsRouteImport } from './routes/requests'
 import { Route as RoleSelectionRouteImport } from './routes/role-selection'
+import { Route as MessagesIndexRouteImport } from './routes/messages.index'
+import { Route as MessagesIdRouteImport } from './routes/messages.$id'
 import { Route as OnboardingProfessionalRouteImport } from './routes/onboarding.professional'
 import { Route as OnboardingYouthRouteImport } from './routes/onboarding.youth'
 import { Route as ProfessionalIndexRouteImport } from './routes/professional.index'
+import { Route as ProfessionalProfileRouteImport } from './routes/professional.profile'
+import { Route as ProfessionalsIdRouteImport } from './routes/professionals.$id'
+import { Route as YouthProfilesIdRouteImport } from './routes/youth-profiles.$id'
 import { Route as YouthIndexRouteImport } from './routes/youth.index'
+import { Route as YouthProfileRouteImport } from './routes/youth.profile'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiscoveryRoute = DiscoveryRouteImport.update({
+  id: '/discovery',
+  path: '/discovery',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
@@ -39,9 +52,24 @@ const RegisterRoute = RegisterRouteImport.update({
   path: '/register',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RequestsRoute = RequestsRouteImport.update({
+  id: '/requests',
+  path: '/requests',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RoleSelectionRoute = RoleSelectionRouteImport.update({
   id: '/role-selection',
   path: '/role-selection',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MessagesIndexRoute = MessagesIndexRouteImport.update({
+  id: '/messages/',
+  path: '/messages/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MessagesIdRoute = MessagesIdRouteImport.update({
+  id: '/messages/$id',
+  path: '/messages/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OnboardingProfessionalRoute = OnboardingProfessionalRouteImport.update({
@@ -59,43 +87,87 @@ const ProfessionalIndexRoute = ProfessionalIndexRouteImport.update({
   path: '/professional/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfessionalProfileRoute = ProfessionalProfileRouteImport.update({
+  id: '/professional/profile',
+  path: '/professional/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfessionalsIdRoute = ProfessionalsIdRouteImport.update({
+  id: '/professionals/$id',
+  path: '/professionals/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YouthProfilesIdRoute = YouthProfilesIdRouteImport.update({
+  id: '/youth-profiles/$id',
+  path: '/youth-profiles/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const YouthIndexRoute = YouthIndexRouteImport.update({
   id: '/youth/',
   path: '/youth/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const YouthProfileRoute = YouthProfileRouteImport.update({
+  id: '/youth/profile',
+  path: '/youth/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/discovery': typeof DiscoveryRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/requests': typeof RequestsRoute
   '/role-selection': typeof RoleSelectionRoute
+  '/messages/$id': typeof MessagesIdRoute
   '/onboarding/professional': typeof OnboardingProfessionalRoute
   '/onboarding/youth': typeof OnboardingYouthRoute
+  '/professional/profile': typeof ProfessionalProfileRoute
+  '/professionals/$id': typeof ProfessionalsIdRoute
+  '/youth-profiles/$id': typeof YouthProfilesIdRoute
+  '/youth/profile': typeof YouthProfileRoute
+  '/messages/': typeof MessagesIndexRoute
   '/professional/': typeof ProfessionalIndexRoute
   '/youth/': typeof YouthIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/discovery': typeof DiscoveryRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/requests': typeof RequestsRoute
   '/role-selection': typeof RoleSelectionRoute
+  '/messages/$id': typeof MessagesIdRoute
   '/onboarding/professional': typeof OnboardingProfessionalRoute
   '/onboarding/youth': typeof OnboardingYouthRoute
+  '/professional/profile': typeof ProfessionalProfileRoute
+  '/professionals/$id': typeof ProfessionalsIdRoute
+  '/youth-profiles/$id': typeof YouthProfilesIdRoute
+  '/youth/profile': typeof YouthProfileRoute
+  '/messages': typeof MessagesIndexRoute
   '/professional': typeof ProfessionalIndexRoute
   '/youth': typeof YouthIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/discovery': typeof DiscoveryRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/requests': typeof RequestsRoute
   '/role-selection': typeof RoleSelectionRoute
+  '/messages/$id': typeof MessagesIdRoute
   '/onboarding/professional': typeof OnboardingProfessionalRoute
   '/onboarding/youth': typeof OnboardingYouthRoute
+  '/professional/profile': typeof ProfessionalProfileRoute
+  '/professionals/$id': typeof ProfessionalsIdRoute
+  '/youth-profiles/$id': typeof YouthProfilesIdRoute
+  '/youth/profile': typeof YouthProfileRoute
+  '/messages/': typeof MessagesIndexRoute
   '/professional/': typeof ProfessionalIndexRoute
   '/youth/': typeof YouthIndexRoute
 }
@@ -103,46 +175,78 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/discovery'
     | '/forgot-password'
     | '/login'
     | '/register'
+    | '/requests'
     | '/role-selection'
+    | '/messages/$id'
     | '/onboarding/professional'
     | '/onboarding/youth'
+    | '/professional/profile'
+    | '/professionals/$id'
+    | '/youth-profiles/$id'
+    | '/youth/profile'
+    | '/messages/'
     | '/professional/'
     | '/youth/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/discovery'
     | '/forgot-password'
     | '/login'
     | '/register'
+    | '/requests'
     | '/role-selection'
+    | '/messages/$id'
     | '/onboarding/professional'
     | '/onboarding/youth'
+    | '/professional/profile'
+    | '/professionals/$id'
+    | '/youth-profiles/$id'
+    | '/youth/profile'
+    | '/messages'
     | '/professional'
     | '/youth'
   id:
     | '__root__'
     | '/'
+    | '/discovery'
     | '/forgot-password'
     | '/login'
     | '/register'
+    | '/requests'
     | '/role-selection'
+    | '/messages/$id'
     | '/onboarding/professional'
     | '/onboarding/youth'
+    | '/professional/profile'
+    | '/professionals/$id'
+    | '/youth-profiles/$id'
+    | '/youth/profile'
+    | '/messages/'
     | '/professional/'
     | '/youth/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DiscoveryRoute: typeof DiscoveryRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
+  RequestsRoute: typeof RequestsRoute
   RoleSelectionRoute: typeof RoleSelectionRoute
+  MessagesIdRoute: typeof MessagesIdRoute
   OnboardingProfessionalRoute: typeof OnboardingProfessionalRoute
   OnboardingYouthRoute: typeof OnboardingYouthRoute
+  ProfessionalProfileRoute: typeof ProfessionalProfileRoute
+  ProfessionalsIdRoute: typeof ProfessionalsIdRoute
+  YouthProfilesIdRoute: typeof YouthProfilesIdRoute
+  YouthProfileRoute: typeof YouthProfileRoute
+  MessagesIndexRoute: typeof MessagesIndexRoute
   ProfessionalIndexRoute: typeof ProfessionalIndexRoute
   YouthIndexRoute: typeof YouthIndexRoute
 }
@@ -154,6 +258,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/discovery': {
+      id: '/discovery'
+      path: '/discovery'
+      fullPath: '/discovery'
+      preLoaderRoute: typeof DiscoveryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/forgot-password': {
@@ -177,11 +288,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/requests': {
+      id: '/requests'
+      path: '/requests'
+      fullPath: '/requests'
+      preLoaderRoute: typeof RequestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/role-selection': {
       id: '/role-selection'
       path: '/role-selection'
       fullPath: '/role-selection'
       preLoaderRoute: typeof RoleSelectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/messages/': {
+      id: '/messages/'
+      path: '/messages'
+      fullPath: '/messages/'
+      preLoaderRoute: typeof MessagesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/messages/$id': {
+      id: '/messages/$id'
+      path: '/messages/$id'
+      fullPath: '/messages/$id'
+      preLoaderRoute: typeof MessagesIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/onboarding/professional': {
@@ -205,6 +337,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfessionalIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/professional/profile': {
+      id: '/professional/profile'
+      path: '/professional/profile'
+      fullPath: '/professional/profile'
+      preLoaderRoute: typeof ProfessionalProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/professionals/$id': {
+      id: '/professionals/$id'
+      path: '/professionals/$id'
+      fullPath: '/professionals/$id'
+      preLoaderRoute: typeof ProfessionalsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/youth-profiles/$id': {
+      id: '/youth-profiles/$id'
+      path: '/youth-profiles/$id'
+      fullPath: '/youth-profiles/$id'
+      preLoaderRoute: typeof YouthProfilesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/youth/': {
       id: '/youth/'
       path: '/youth'
@@ -212,17 +365,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof YouthIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/youth/profile': {
+      id: '/youth/profile'
+      path: '/youth/profile'
+      fullPath: '/youth/profile'
+      preLoaderRoute: typeof YouthProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DiscoveryRoute: DiscoveryRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
   LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
+  RequestsRoute: RequestsRoute,
   RoleSelectionRoute: RoleSelectionRoute,
+  MessagesIdRoute: MessagesIdRoute,
   OnboardingProfessionalRoute: OnboardingProfessionalRoute,
   OnboardingYouthRoute: OnboardingYouthRoute,
+  ProfessionalProfileRoute: ProfessionalProfileRoute,
+  ProfessionalsIdRoute: ProfessionalsIdRoute,
+  YouthProfilesIdRoute: YouthProfilesIdRoute,
+  YouthProfileRoute: YouthProfileRoute,
+  MessagesIndexRoute: MessagesIndexRoute,
   ProfessionalIndexRoute: ProfessionalIndexRoute,
   YouthIndexRoute: YouthIndexRoute,
 }
