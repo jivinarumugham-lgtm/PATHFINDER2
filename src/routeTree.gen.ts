@@ -10,9 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CommunityRouteImport } from './routes/community'
 import { Route as DiscoveryRouteImport } from './routes/discovery'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as LogOpportunityRouteImport } from './routes/log-opportunity'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as RequestsRouteImport } from './routes/requests'
 import { Route as RoleSelectionRouteImport } from './routes/role-selection'
@@ -32,6 +36,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DiscoveryRoute = DiscoveryRouteImport.update({
   id: '/discovery',
   path: '/discovery',
@@ -42,9 +51,24 @@ const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
   path: '/forgot-password',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LogOpportunityRoute = LogOpportunityRouteImport.update({
+  id: '/log-opportunity',
+  path: '/log-opportunity',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgressRoute = ProgressRouteImport.update({
+  id: '/progress',
+  path: '/progress',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RegisterRoute = RegisterRouteImport.update({
@@ -115,9 +139,13 @@ const YouthProfileRoute = YouthProfileRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
   '/discovery': typeof DiscoveryRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/log-opportunity': typeof LogOpportunityRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/progress': typeof ProgressRoute
   '/register': typeof RegisterRoute
   '/requests': typeof RequestsRoute
   '/role-selection': typeof RoleSelectionRoute
@@ -134,9 +162,13 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
   '/discovery': typeof DiscoveryRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/log-opportunity': typeof LogOpportunityRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/progress': typeof ProgressRoute
   '/register': typeof RegisterRoute
   '/requests': typeof RequestsRoute
   '/role-selection': typeof RoleSelectionRoute
@@ -154,9 +186,13 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
   '/discovery': typeof DiscoveryRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/log-opportunity': typeof LogOpportunityRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/progress': typeof ProgressRoute
   '/register': typeof RegisterRoute
   '/requests': typeof RequestsRoute
   '/role-selection': typeof RoleSelectionRoute
@@ -175,9 +211,13 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/community'
     | '/discovery'
     | '/forgot-password'
+    | '/log-opportunity'
     | '/login'
+    | '/notifications'
+    | '/progress'
     | '/register'
     | '/requests'
     | '/role-selection'
@@ -194,9 +234,13 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/community'
     | '/discovery'
     | '/forgot-password'
+    | '/log-opportunity'
     | '/login'
+    | '/notifications'
+    | '/progress'
     | '/register'
     | '/requests'
     | '/role-selection'
@@ -213,9 +257,13 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/community'
     | '/discovery'
     | '/forgot-password'
+    | '/log-opportunity'
     | '/login'
+    | '/notifications'
+    | '/progress'
     | '/register'
     | '/requests'
     | '/role-selection'
@@ -233,9 +281,13 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CommunityRoute: typeof CommunityRoute
   DiscoveryRoute: typeof DiscoveryRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
+  LogOpportunityRoute: typeof LogOpportunityRoute
   LoginRoute: typeof LoginRoute
+  NotificationsRoute: typeof NotificationsRoute
+  ProgressRoute: typeof ProgressRoute
   RegisterRoute: typeof RegisterRoute
   RequestsRoute: typeof RequestsRoute
   RoleSelectionRoute: typeof RoleSelectionRoute
@@ -260,6 +312,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/discovery': {
       id: '/discovery'
       path: '/discovery'
@@ -274,11 +333,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForgotPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/log-opportunity': {
+      id: '/log-opportunity'
+      path: '/log-opportunity'
+      fullPath: '/log-opportunity'
+      preLoaderRoute: typeof LogOpportunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/progress': {
+      id: '/progress'
+      path: '/progress'
+      fullPath: '/progress'
+      preLoaderRoute: typeof ProgressRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/register': {
@@ -377,9 +457,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CommunityRoute: CommunityRoute,
   DiscoveryRoute: DiscoveryRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
+  LogOpportunityRoute: LogOpportunityRoute,
   LoginRoute: LoginRoute,
+  NotificationsRoute: NotificationsRoute,
+  ProgressRoute: ProgressRoute,
   RegisterRoute: RegisterRoute,
   RequestsRoute: RequestsRoute,
   RoleSelectionRoute: RoleSelectionRoute,

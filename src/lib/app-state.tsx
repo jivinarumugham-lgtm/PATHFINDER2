@@ -16,6 +16,8 @@ type AppState = {
   connections: Connection[];
   messages: ChatMessage[];
   availableForMentoring: boolean;
+  loggedOpportunities: LoggedOpportunity[];
+  feedbackEntries: FeedbackEntry[];
   signIn: (name?: string) => void;
   signOut: () => void;
   setRole: (role: Role) => void;
@@ -28,6 +30,26 @@ type AppState = {
   respondToConnection: (id: string, status: "accepted" | "declined") => void;
   sendMessage: (connectionId: string, text: string) => void;
   toggleAvailability: () => void;
+  addLoggedOpportunity: (entry: Omit<LoggedOpportunity, "id">) => void;
+  submitFeedback: (entry: Omit<FeedbackEntry, "id">) => void;
+};
+
+export type LoggedOpportunity = {
+  id: string;
+  title: string;
+  organisation: string;
+  type: string;
+  date: string;
+  reflection: string;
+};
+
+export type FeedbackEntry = {
+  id: string;
+  connectionId: string;
+  rating: number;
+  outcome: string;
+  recommend: boolean;
+  comment: string;
 };
 
 const AppStateContext = createContext<AppState | null>(null);
@@ -42,6 +64,25 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
   const [connections, setConnections] = useState<Connection[]>(seedConnections);
   const [messages, setMessages] = useState<ChatMessage[]>(seedMessages);
   const [availableForMentoring, setAvailableForMentoring] = useState(true);
+  const [loggedOpportunities, setLoggedOpportunities] = useState<LoggedOpportunity[]>([
+    {
+      id: "lo1",
+      title: "Community coding club helper",
+      organisation: "Bermondsey Library",
+      type: "Volunteering",
+      date: "Jul 2026",
+      reflection: "Taught Scratch basics to younger students for six Saturdays.",
+    },
+  ]);
+  const [feedbackEntries, setFeedbackEntries] = useState<FeedbackEntry[]>([]);
+
+  const addLoggedOpportunity = useCallback((entry: Omit<LoggedOpportunity, "id">) => {
+    setLoggedOpportunities((prev) => [{ ...entry, id: `lo${prev.length + 1}` }, ...prev]);
+  }, []);
+
+  const submitFeedback = useCallback((entry: Omit<FeedbackEntry, "id">) => {
+    setFeedbackEntries((prev) => [{ ...entry, id: `fb${prev.length + 1}` }, ...prev]);
+  }, []);
 
   const signIn = useCallback((name?: string) => {
     setSignedIn(true);
@@ -103,6 +144,8 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       connections,
       messages,
       availableForMentoring,
+      loggedOpportunities,
+      feedbackEntries,
       signIn,
       signOut,
       setRole,
@@ -111,6 +154,8 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       respondToConnection,
       sendMessage,
       toggleAvailability: () => setAvailableForMentoring((v) => !v),
+      addLoggedOpportunity,
+      submitFeedback,
     }),
     [
       signedIn,
@@ -120,6 +165,8 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       connections,
       messages,
       availableForMentoring,
+      loggedOpportunities,
+      feedbackEntries,
       signIn,
       signOut,
       setRole,
