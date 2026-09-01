@@ -17,6 +17,7 @@ import { Route as RegisterRouteImport } from './routes/register'
 import { Route as RequestsRouteImport } from './routes/requests'
 import { Route as RoleSelectionRouteImport } from './routes/role-selection'
 import { Route as MessagesIndexRouteImport } from './routes/messages.index'
+import { Route as MessagesIdRouteImport } from './routes/messages.$id'
 import { Route as OnboardingProfessionalRouteImport } from './routes/onboarding.professional'
 import { Route as OnboardingYouthRouteImport } from './routes/onboarding.youth'
 import { Route as ProfessionalIndexRouteImport } from './routes/professional.index'
@@ -64,6 +65,11 @@ const MessagesIndexRoute = MessagesIndexRouteImport.update({
   path: '/messages/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MessagesIdRoute = MessagesIdRouteImport.update({
+  id: '/messages/$id',
+  path: '/messages/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OnboardingProfessionalRoute = OnboardingProfessionalRouteImport.update({
   id: '/onboarding/professional',
   path: '/onboarding/professional',
@@ -103,6 +109,7 @@ export interface FileRoutesByFullPath {
   '/register': typeof RegisterRoute
   '/requests': typeof RequestsRoute
   '/role-selection': typeof RoleSelectionRoute
+  '/messages/$id': typeof MessagesIdRoute
   '/onboarding/professional': typeof OnboardingProfessionalRoute
   '/onboarding/youth': typeof OnboardingYouthRoute
   '/professionals/$id': typeof ProfessionalsIdRoute
@@ -119,6 +126,7 @@ export interface FileRoutesByTo {
   '/register': typeof RegisterRoute
   '/requests': typeof RequestsRoute
   '/role-selection': typeof RoleSelectionRoute
+  '/messages/$id': typeof MessagesIdRoute
   '/onboarding/professional': typeof OnboardingProfessionalRoute
   '/onboarding/youth': typeof OnboardingYouthRoute
   '/professionals/$id': typeof ProfessionalsIdRoute
@@ -136,6 +144,7 @@ export interface FileRoutesById {
   '/register': typeof RegisterRoute
   '/requests': typeof RequestsRoute
   '/role-selection': typeof RoleSelectionRoute
+  '/messages/$id': typeof MessagesIdRoute
   '/onboarding/professional': typeof OnboardingProfessionalRoute
   '/onboarding/youth': typeof OnboardingYouthRoute
   '/professionals/$id': typeof ProfessionalsIdRoute
@@ -154,6 +163,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/requests'
     | '/role-selection'
+    | '/messages/$id'
     | '/onboarding/professional'
     | '/onboarding/youth'
     | '/professionals/$id'
@@ -170,6 +180,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/requests'
     | '/role-selection'
+    | '/messages/$id'
     | '/onboarding/professional'
     | '/onboarding/youth'
     | '/professionals/$id'
@@ -186,6 +197,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/requests'
     | '/role-selection'
+    | '/messages/$id'
     | '/onboarding/professional'
     | '/onboarding/youth'
     | '/professionals/$id'
@@ -203,6 +215,7 @@ export interface RootRouteChildren {
   RegisterRoute: typeof RegisterRoute
   RequestsRoute: typeof RequestsRoute
   RoleSelectionRoute: typeof RoleSelectionRoute
+  MessagesIdRoute: typeof MessagesIdRoute
   OnboardingProfessionalRoute: typeof OnboardingProfessionalRoute
   OnboardingYouthRoute: typeof OnboardingYouthRoute
   ProfessionalsIdRoute: typeof ProfessionalsIdRoute
@@ -270,6 +283,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MessagesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/messages/$id': {
+      id: '/messages/$id'
+      path: '/messages/$id'
+      fullPath: '/messages/$id'
+      preLoaderRoute: typeof MessagesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/onboarding/professional': {
       id: '/onboarding/professional'
       path: '/onboarding/professional'
@@ -323,6 +343,7 @@ const rootRouteChildren: RootRouteChildren = {
   RegisterRoute: RegisterRoute,
   RequestsRoute: RequestsRoute,
   RoleSelectionRoute: RoleSelectionRoute,
+  MessagesIdRoute: MessagesIdRoute,
   OnboardingProfessionalRoute: OnboardingProfessionalRoute,
   OnboardingYouthRoute: OnboardingYouthRoute,
   ProfessionalsIdRoute: ProfessionalsIdRoute,
