@@ -21,6 +21,7 @@ import { Route as MessagesIdRouteImport } from './routes/messages.$id'
 import { Route as OnboardingProfessionalRouteImport } from './routes/onboarding.professional'
 import { Route as OnboardingYouthRouteImport } from './routes/onboarding.youth'
 import { Route as ProfessionalIndexRouteImport } from './routes/professional.index'
+import { Route as ProfessionalProfileRouteImport } from './routes/professional.profile'
 import { Route as ProfessionalsIdRouteImport } from './routes/professionals.$id'
 import { Route as YouthProfilesIdRouteImport } from './routes/youth-profiles.$id'
 import { Route as YouthIndexRouteImport } from './routes/youth.index'
@@ -86,6 +87,11 @@ const ProfessionalIndexRoute = ProfessionalIndexRouteImport.update({
   path: '/professional/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfessionalProfileRoute = ProfessionalProfileRouteImport.update({
+  id: '/professional/profile',
+  path: '/professional/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProfessionalsIdRoute = ProfessionalsIdRouteImport.update({
   id: '/professionals/$id',
   path: '/professionals/$id',
@@ -118,6 +124,7 @@ export interface FileRoutesByFullPath {
   '/messages/$id': typeof MessagesIdRoute
   '/onboarding/professional': typeof OnboardingProfessionalRoute
   '/onboarding/youth': typeof OnboardingYouthRoute
+  '/professional/profile': typeof ProfessionalProfileRoute
   '/professionals/$id': typeof ProfessionalsIdRoute
   '/youth-profiles/$id': typeof YouthProfilesIdRoute
   '/youth/profile': typeof YouthProfileRoute
@@ -136,6 +143,7 @@ export interface FileRoutesByTo {
   '/messages/$id': typeof MessagesIdRoute
   '/onboarding/professional': typeof OnboardingProfessionalRoute
   '/onboarding/youth': typeof OnboardingYouthRoute
+  '/professional/profile': typeof ProfessionalProfileRoute
   '/professionals/$id': typeof ProfessionalsIdRoute
   '/youth-profiles/$id': typeof YouthProfilesIdRoute
   '/youth/profile': typeof YouthProfileRoute
@@ -155,6 +163,7 @@ export interface FileRoutesById {
   '/messages/$id': typeof MessagesIdRoute
   '/onboarding/professional': typeof OnboardingProfessionalRoute
   '/onboarding/youth': typeof OnboardingYouthRoute
+  '/professional/profile': typeof ProfessionalProfileRoute
   '/professionals/$id': typeof ProfessionalsIdRoute
   '/youth-profiles/$id': typeof YouthProfilesIdRoute
   '/youth/profile': typeof YouthProfileRoute
@@ -175,6 +184,7 @@ export interface FileRouteTypes {
     | '/messages/$id'
     | '/onboarding/professional'
     | '/onboarding/youth'
+    | '/professional/profile'
     | '/professionals/$id'
     | '/youth-profiles/$id'
     | '/youth/profile'
@@ -193,6 +203,7 @@ export interface FileRouteTypes {
     | '/messages/$id'
     | '/onboarding/professional'
     | '/onboarding/youth'
+    | '/professional/profile'
     | '/professionals/$id'
     | '/youth-profiles/$id'
     | '/youth/profile'
@@ -211,6 +222,7 @@ export interface FileRouteTypes {
     | '/messages/$id'
     | '/onboarding/professional'
     | '/onboarding/youth'
+    | '/professional/profile'
     | '/professionals/$id'
     | '/youth-profiles/$id'
     | '/youth/profile'
@@ -230,6 +242,7 @@ export interface RootRouteChildren {
   MessagesIdRoute: typeof MessagesIdRoute
   OnboardingProfessionalRoute: typeof OnboardingProfessionalRoute
   OnboardingYouthRoute: typeof OnboardingYouthRoute
+  ProfessionalProfileRoute: typeof ProfessionalProfileRoute
   ProfessionalsIdRoute: typeof ProfessionalsIdRoute
   YouthProfilesIdRoute: typeof YouthProfilesIdRoute
   YouthProfileRoute: typeof YouthProfileRoute
@@ -324,6 +337,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfessionalIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/professional/profile': {
+      id: '/professional/profile'
+      path: '/professional/profile'
+      fullPath: '/professional/profile'
+      preLoaderRoute: typeof ProfessionalProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/professionals/$id': {
       id: '/professionals/$id'
       path: '/professionals/$id'
@@ -366,6 +386,7 @@ const rootRouteChildren: RootRouteChildren = {
   MessagesIdRoute: MessagesIdRoute,
   OnboardingProfessionalRoute: OnboardingProfessionalRoute,
   OnboardingYouthRoute: OnboardingYouthRoute,
+  ProfessionalProfileRoute: ProfessionalProfileRoute,
   ProfessionalsIdRoute: ProfessionalsIdRoute,
   YouthProfilesIdRoute: YouthProfilesIdRoute,
   YouthProfileRoute: YouthProfileRoute,
