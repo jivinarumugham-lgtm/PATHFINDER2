@@ -14,6 +14,7 @@ import { Route as DiscoveryRouteImport } from './routes/discovery'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as RegisterRouteImport } from './routes/register'
+import { Route as RequestsRouteImport } from './routes/requests'
 import { Route as RoleSelectionRouteImport } from './routes/role-selection'
 import { Route as OnboardingProfessionalRouteImport } from './routes/onboarding.professional'
 import { Route as OnboardingYouthRouteImport } from './routes/onboarding.youth'
@@ -45,6 +46,11 @@ const LoginRoute = LoginRouteImport.update({
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RequestsRoute = RequestsRouteImport.update({
+  id: '/requests',
+  path: '/requests',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RoleSelectionRoute = RoleSelectionRouteImport.update({
@@ -89,6 +95,7 @@ export interface FileRoutesByFullPath {
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/requests': typeof RequestsRoute
   '/role-selection': typeof RoleSelectionRoute
   '/onboarding/professional': typeof OnboardingProfessionalRoute
   '/onboarding/youth': typeof OnboardingYouthRoute
@@ -103,6 +110,7 @@ export interface FileRoutesByTo {
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/requests': typeof RequestsRoute
   '/role-selection': typeof RoleSelectionRoute
   '/onboarding/professional': typeof OnboardingProfessionalRoute
   '/onboarding/youth': typeof OnboardingYouthRoute
@@ -118,6 +126,7 @@ export interface FileRoutesById {
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/requests': typeof RequestsRoute
   '/role-selection': typeof RoleSelectionRoute
   '/onboarding/professional': typeof OnboardingProfessionalRoute
   '/onboarding/youth': typeof OnboardingYouthRoute
@@ -134,6 +143,7 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/login'
     | '/register'
+    | '/requests'
     | '/role-selection'
     | '/onboarding/professional'
     | '/onboarding/youth'
@@ -148,6 +158,7 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/login'
     | '/register'
+    | '/requests'
     | '/role-selection'
     | '/onboarding/professional'
     | '/onboarding/youth'
@@ -162,6 +173,7 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/login'
     | '/register'
+    | '/requests'
     | '/role-selection'
     | '/onboarding/professional'
     | '/onboarding/youth'
@@ -177,6 +189,7 @@ export interface RootRouteChildren {
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
+  RequestsRoute: typeof RequestsRoute
   RoleSelectionRoute: typeof RoleSelectionRoute
   OnboardingProfessionalRoute: typeof OnboardingProfessionalRoute
   OnboardingYouthRoute: typeof OnboardingYouthRoute
@@ -221,6 +234,13 @@ declare module '@tanstack/react-router' {
       path: '/register'
       fullPath: '/register'
       preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/requests': {
+      id: '/requests'
+      path: '/requests'
+      fullPath: '/requests'
+      preLoaderRoute: typeof RequestsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/role-selection': {
@@ -281,6 +301,7 @@ const rootRouteChildren: RootRouteChildren = {
   ForgotPasswordRoute: ForgotPasswordRoute,
   LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
+  RequestsRoute: RequestsRoute,
   RoleSelectionRoute: RoleSelectionRoute,
   OnboardingProfessionalRoute: OnboardingProfessionalRoute,
   OnboardingYouthRoute: OnboardingYouthRoute,
