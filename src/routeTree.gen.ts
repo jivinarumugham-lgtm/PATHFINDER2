@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as CommunityRouteImport } from './routes/community'
 import { Route as DiscoveryRouteImport } from './routes/discovery'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as LogOpportunityRouteImport } from './routes/log-opportunity'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as ProgressRouteImport } from './routes/progress'
@@ -48,6 +49,11 @@ const DiscoveryRoute = DiscoveryRouteImport.update({
 const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
   id: '/forgot-password',
   path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LogOpportunityRoute = LogOpportunityRouteImport.update({
+  id: '/log-opportunity',
+  path: '/log-opportunity',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -136,6 +142,7 @@ export interface FileRoutesByFullPath {
   '/community': typeof CommunityRoute
   '/discovery': typeof DiscoveryRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/log-opportunity': typeof LogOpportunityRoute
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/progress': typeof ProgressRoute
@@ -158,6 +165,7 @@ export interface FileRoutesByTo {
   '/community': typeof CommunityRoute
   '/discovery': typeof DiscoveryRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/log-opportunity': typeof LogOpportunityRoute
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/progress': typeof ProgressRoute
@@ -181,6 +189,7 @@ export interface FileRoutesById {
   '/community': typeof CommunityRoute
   '/discovery': typeof DiscoveryRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/log-opportunity': typeof LogOpportunityRoute
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/progress': typeof ProgressRoute
@@ -205,6 +214,7 @@ export interface FileRouteTypes {
     | '/community'
     | '/discovery'
     | '/forgot-password'
+    | '/log-opportunity'
     | '/login'
     | '/notifications'
     | '/progress'
@@ -227,6 +237,7 @@ export interface FileRouteTypes {
     | '/community'
     | '/discovery'
     | '/forgot-password'
+    | '/log-opportunity'
     | '/login'
     | '/notifications'
     | '/progress'
@@ -249,6 +260,7 @@ export interface FileRouteTypes {
     | '/community'
     | '/discovery'
     | '/forgot-password'
+    | '/log-opportunity'
     | '/login'
     | '/notifications'
     | '/progress'
@@ -272,6 +284,7 @@ export interface RootRouteChildren {
   CommunityRoute: typeof CommunityRoute
   DiscoveryRoute: typeof DiscoveryRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
+  LogOpportunityRoute: typeof LogOpportunityRoute
   LoginRoute: typeof LoginRoute
   NotificationsRoute: typeof NotificationsRoute
   ProgressRoute: typeof ProgressRoute
@@ -318,6 +331,13 @@ declare module '@tanstack/react-router' {
       path: '/forgot-password'
       fullPath: '/forgot-password'
       preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/log-opportunity': {
+      id: '/log-opportunity'
+      path: '/log-opportunity'
+      fullPath: '/log-opportunity'
+      preLoaderRoute: typeof LogOpportunityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -440,6 +460,7 @@ const rootRouteChildren: RootRouteChildren = {
   CommunityRoute: CommunityRoute,
   DiscoveryRoute: DiscoveryRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
+  LogOpportunityRoute: LogOpportunityRoute,
   LoginRoute: LoginRoute,
   NotificationsRoute: NotificationsRoute,
   ProgressRoute: ProgressRoute,
