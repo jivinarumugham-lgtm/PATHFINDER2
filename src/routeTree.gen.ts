@@ -16,6 +16,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as RequestsRouteImport } from './routes/requests'
 import { Route as RoleSelectionRouteImport } from './routes/role-selection'
+import { Route as MessagesIndexRouteImport } from './routes/messages.index'
 import { Route as OnboardingProfessionalRouteImport } from './routes/onboarding.professional'
 import { Route as OnboardingYouthRouteImport } from './routes/onboarding.youth'
 import { Route as ProfessionalIndexRouteImport } from './routes/professional.index'
@@ -56,6 +57,11 @@ const RequestsRoute = RequestsRouteImport.update({
 const RoleSelectionRoute = RoleSelectionRouteImport.update({
   id: '/role-selection',
   path: '/role-selection',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MessagesIndexRoute = MessagesIndexRouteImport.update({
+  id: '/messages/',
+  path: '/messages/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OnboardingProfessionalRoute = OnboardingProfessionalRouteImport.update({
@@ -101,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/onboarding/youth': typeof OnboardingYouthRoute
   '/professionals/$id': typeof ProfessionalsIdRoute
   '/youth-profiles/$id': typeof YouthProfilesIdRoute
+  '/messages/': typeof MessagesIndexRoute
   '/professional/': typeof ProfessionalIndexRoute
   '/youth/': typeof YouthIndexRoute
 }
@@ -116,6 +123,7 @@ export interface FileRoutesByTo {
   '/onboarding/youth': typeof OnboardingYouthRoute
   '/professionals/$id': typeof ProfessionalsIdRoute
   '/youth-profiles/$id': typeof YouthProfilesIdRoute
+  '/messages': typeof MessagesIndexRoute
   '/professional': typeof ProfessionalIndexRoute
   '/youth': typeof YouthIndexRoute
 }
@@ -132,6 +140,7 @@ export interface FileRoutesById {
   '/onboarding/youth': typeof OnboardingYouthRoute
   '/professionals/$id': typeof ProfessionalsIdRoute
   '/youth-profiles/$id': typeof YouthProfilesIdRoute
+  '/messages/': typeof MessagesIndexRoute
   '/professional/': typeof ProfessionalIndexRoute
   '/youth/': typeof YouthIndexRoute
 }
@@ -149,6 +158,7 @@ export interface FileRouteTypes {
     | '/onboarding/youth'
     | '/professionals/$id'
     | '/youth-profiles/$id'
+    | '/messages/'
     | '/professional/'
     | '/youth/'
   fileRoutesByTo: FileRoutesByTo
@@ -164,6 +174,7 @@ export interface FileRouteTypes {
     | '/onboarding/youth'
     | '/professionals/$id'
     | '/youth-profiles/$id'
+    | '/messages'
     | '/professional'
     | '/youth'
   id:
@@ -179,6 +190,7 @@ export interface FileRouteTypes {
     | '/onboarding/youth'
     | '/professionals/$id'
     | '/youth-profiles/$id'
+    | '/messages/'
     | '/professional/'
     | '/youth/'
   fileRoutesById: FileRoutesById
@@ -195,6 +207,7 @@ export interface RootRouteChildren {
   OnboardingYouthRoute: typeof OnboardingYouthRoute
   ProfessionalsIdRoute: typeof ProfessionalsIdRoute
   YouthProfilesIdRoute: typeof YouthProfilesIdRoute
+  MessagesIndexRoute: typeof MessagesIndexRoute
   ProfessionalIndexRoute: typeof ProfessionalIndexRoute
   YouthIndexRoute: typeof YouthIndexRoute
 }
@@ -248,6 +261,13 @@ declare module '@tanstack/react-router' {
       path: '/role-selection'
       fullPath: '/role-selection'
       preLoaderRoute: typeof RoleSelectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/messages/': {
+      id: '/messages/'
+      path: '/messages'
+      fullPath: '/messages/'
+      preLoaderRoute: typeof MessagesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/onboarding/professional': {
@@ -307,6 +327,7 @@ const rootRouteChildren: RootRouteChildren = {
   OnboardingYouthRoute: OnboardingYouthRoute,
   ProfessionalsIdRoute: ProfessionalsIdRoute,
   YouthProfilesIdRoute: YouthProfilesIdRoute,
+  MessagesIndexRoute: MessagesIndexRoute,
   ProfessionalIndexRoute: ProfessionalIndexRoute,
   YouthIndexRoute: YouthIndexRoute,
 }
