@@ -18,6 +18,7 @@ import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LogOpportunityRouteImport } from './routes/log-opportunity'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as RequestsRouteImport } from './routes/requests'
@@ -77,6 +78,11 @@ const LoginRoute = LoginRouteImport.update({
 const NotificationsRoute = NotificationsRouteImport.update({
   id: '/notifications',
   path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProgressRoute = ProgressRouteImport.update({
@@ -165,6 +171,7 @@ export interface FileRoutesByFullPath {
   '/log-opportunity': typeof LogOpportunityRoute
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
+  '/privacy': typeof PrivacyRoute
   '/progress': typeof ProgressRoute
   '/register': typeof RegisterRoute
   '/requests': typeof RequestsRoute
@@ -191,6 +198,7 @@ export interface FileRoutesByTo {
   '/log-opportunity': typeof LogOpportunityRoute
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
+  '/privacy': typeof PrivacyRoute
   '/progress': typeof ProgressRoute
   '/register': typeof RegisterRoute
   '/requests': typeof RequestsRoute
@@ -218,6 +226,7 @@ export interface FileRoutesById {
   '/log-opportunity': typeof LogOpportunityRoute
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
+  '/privacy': typeof PrivacyRoute
   '/progress': typeof ProgressRoute
   '/register': typeof RegisterRoute
   '/requests': typeof RequestsRoute
@@ -246,6 +255,7 @@ export interface FileRouteTypes {
     | '/log-opportunity'
     | '/login'
     | '/notifications'
+    | '/privacy'
     | '/progress'
     | '/register'
     | '/requests'
@@ -272,6 +282,7 @@ export interface FileRouteTypes {
     | '/log-opportunity'
     | '/login'
     | '/notifications'
+    | '/privacy'
     | '/progress'
     | '/register'
     | '/requests'
@@ -298,6 +309,7 @@ export interface FileRouteTypes {
     | '/log-opportunity'
     | '/login'
     | '/notifications'
+    | '/privacy'
     | '/progress'
     | '/register'
     | '/requests'
@@ -325,6 +337,7 @@ export interface RootRouteChildren {
   LogOpportunityRoute: typeof LogOpportunityRoute
   LoginRoute: typeof LoginRoute
   NotificationsRoute: typeof NotificationsRoute
+  PrivacyRoute: typeof PrivacyRoute
   ProgressRoute: typeof ProgressRoute
   RegisterRoute: typeof RegisterRoute
   RequestsRoute: typeof RequestsRoute
@@ -405,6 +418,13 @@ declare module '@tanstack/react-router' {
       path: '/notifications'
       fullPath: '/notifications'
       preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/progress': {
@@ -525,6 +545,7 @@ const rootRouteChildren: RootRouteChildren = {
   LogOpportunityRoute: LogOpportunityRoute,
   LoginRoute: LoginRoute,
   NotificationsRoute: NotificationsRoute,
+  PrivacyRoute: PrivacyRoute,
   ProgressRoute: ProgressRoute,
   RegisterRoute: RegisterRoute,
   RequestsRoute: RequestsRoute,
