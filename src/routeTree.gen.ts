@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CommunityRouteImport } from './routes/community'
 import { Route as DiscoveryRouteImport } from './routes/discovery'
+import { Route as FeedbackRouteImport } from './routes/feedback'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LogOpportunityRouteImport } from './routes/log-opportunity'
 import { Route as LoginRouteImport } from './routes/login'
@@ -44,6 +45,11 @@ const CommunityRoute = CommunityRouteImport.update({
 const DiscoveryRoute = DiscoveryRouteImport.update({
   id: '/discovery',
   path: '/discovery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeedbackRoute = FeedbackRouteImport.update({
+  id: '/feedback',
+  path: '/feedback',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
@@ -141,6 +147,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/community': typeof CommunityRoute
   '/discovery': typeof DiscoveryRoute
+  '/feedback': typeof FeedbackRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/log-opportunity': typeof LogOpportunityRoute
   '/login': typeof LoginRoute
@@ -164,6 +171,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/community': typeof CommunityRoute
   '/discovery': typeof DiscoveryRoute
+  '/feedback': typeof FeedbackRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/log-opportunity': typeof LogOpportunityRoute
   '/login': typeof LoginRoute
@@ -188,6 +196,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/community': typeof CommunityRoute
   '/discovery': typeof DiscoveryRoute
+  '/feedback': typeof FeedbackRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/log-opportunity': typeof LogOpportunityRoute
   '/login': typeof LoginRoute
@@ -213,6 +222,7 @@ export interface FileRouteTypes {
     | '/'
     | '/community'
     | '/discovery'
+    | '/feedback'
     | '/forgot-password'
     | '/log-opportunity'
     | '/login'
@@ -236,6 +246,7 @@ export interface FileRouteTypes {
     | '/'
     | '/community'
     | '/discovery'
+    | '/feedback'
     | '/forgot-password'
     | '/log-opportunity'
     | '/login'
@@ -259,6 +270,7 @@ export interface FileRouteTypes {
     | '/'
     | '/community'
     | '/discovery'
+    | '/feedback'
     | '/forgot-password'
     | '/log-opportunity'
     | '/login'
@@ -283,6 +295,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CommunityRoute: typeof CommunityRoute
   DiscoveryRoute: typeof DiscoveryRoute
+  FeedbackRoute: typeof FeedbackRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   LogOpportunityRoute: typeof LogOpportunityRoute
   LoginRoute: typeof LoginRoute
@@ -324,6 +337,13 @@ declare module '@tanstack/react-router' {
       path: '/discovery'
       fullPath: '/discovery'
       preLoaderRoute: typeof DiscoveryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/feedback': {
+      id: '/feedback'
+      path: '/feedback'
+      fullPath: '/feedback'
+      preLoaderRoute: typeof FeedbackRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/forgot-password': {
@@ -459,6 +479,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CommunityRoute: CommunityRoute,
   DiscoveryRoute: DiscoveryRoute,
+  FeedbackRoute: FeedbackRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
   LogOpportunityRoute: LogOpportunityRoute,
   LoginRoute: LoginRoute,
