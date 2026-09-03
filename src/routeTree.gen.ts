@@ -10,16 +10,20 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as CommunityRouteImport } from './routes/community'
 import { Route as DiscoveryRouteImport } from './routes/discovery'
+import { Route as FeedbackRouteImport } from './routes/feedback'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LogOpportunityRouteImport } from './routes/log-opportunity'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as RequestsRouteImport } from './routes/requests'
 import { Route as RoleSelectionRouteImport } from './routes/role-selection'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as MessagesIndexRouteImport } from './routes/messages.index'
 import { Route as MessagesIdRouteImport } from './routes/messages.$id'
 import { Route as OnboardingProfessionalRouteImport } from './routes/onboarding.professional'
@@ -36,6 +40,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CommunityRoute = CommunityRouteImport.update({
   id: '/community',
   path: '/community',
@@ -44,6 +53,11 @@ const CommunityRoute = CommunityRouteImport.update({
 const DiscoveryRoute = DiscoveryRouteImport.update({
   id: '/discovery',
   path: '/discovery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeedbackRoute = FeedbackRouteImport.update({
+  id: '/feedback',
+  path: '/feedback',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
@@ -66,6 +80,11 @@ const NotificationsRoute = NotificationsRouteImport.update({
   path: '/notifications',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgressRoute = ProgressRouteImport.update({
   id: '/progress',
   path: '/progress',
@@ -84,6 +103,11 @@ const RequestsRoute = RequestsRouteImport.update({
 const RoleSelectionRoute = RoleSelectionRouteImport.update({
   id: '/role-selection',
   path: '/role-selection',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MessagesIndexRoute = MessagesIndexRouteImport.update({
@@ -139,16 +163,20 @@ const YouthProfileRoute = YouthProfileRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/community': typeof CommunityRoute
   '/discovery': typeof DiscoveryRoute
+  '/feedback': typeof FeedbackRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/log-opportunity': typeof LogOpportunityRoute
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
+  '/privacy': typeof PrivacyRoute
   '/progress': typeof ProgressRoute
   '/register': typeof RegisterRoute
   '/requests': typeof RequestsRoute
   '/role-selection': typeof RoleSelectionRoute
+  '/settings': typeof SettingsRoute
   '/messages/$id': typeof MessagesIdRoute
   '/onboarding/professional': typeof OnboardingProfessionalRoute
   '/onboarding/youth': typeof OnboardingYouthRoute
@@ -162,16 +190,20 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/community': typeof CommunityRoute
   '/discovery': typeof DiscoveryRoute
+  '/feedback': typeof FeedbackRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/log-opportunity': typeof LogOpportunityRoute
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
+  '/privacy': typeof PrivacyRoute
   '/progress': typeof ProgressRoute
   '/register': typeof RegisterRoute
   '/requests': typeof RequestsRoute
   '/role-selection': typeof RoleSelectionRoute
+  '/settings': typeof SettingsRoute
   '/messages/$id': typeof MessagesIdRoute
   '/onboarding/professional': typeof OnboardingProfessionalRoute
   '/onboarding/youth': typeof OnboardingYouthRoute
@@ -186,16 +218,20 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/community': typeof CommunityRoute
   '/discovery': typeof DiscoveryRoute
+  '/feedback': typeof FeedbackRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/log-opportunity': typeof LogOpportunityRoute
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
+  '/privacy': typeof PrivacyRoute
   '/progress': typeof ProgressRoute
   '/register': typeof RegisterRoute
   '/requests': typeof RequestsRoute
   '/role-selection': typeof RoleSelectionRoute
+  '/settings': typeof SettingsRoute
   '/messages/$id': typeof MessagesIdRoute
   '/onboarding/professional': typeof OnboardingProfessionalRoute
   '/onboarding/youth': typeof OnboardingYouthRoute
@@ -211,16 +247,20 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/community'
     | '/discovery'
+    | '/feedback'
     | '/forgot-password'
     | '/log-opportunity'
     | '/login'
     | '/notifications'
+    | '/privacy'
     | '/progress'
     | '/register'
     | '/requests'
     | '/role-selection'
+    | '/settings'
     | '/messages/$id'
     | '/onboarding/professional'
     | '/onboarding/youth'
@@ -234,16 +274,20 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/community'
     | '/discovery'
+    | '/feedback'
     | '/forgot-password'
     | '/log-opportunity'
     | '/login'
     | '/notifications'
+    | '/privacy'
     | '/progress'
     | '/register'
     | '/requests'
     | '/role-selection'
+    | '/settings'
     | '/messages/$id'
     | '/onboarding/professional'
     | '/onboarding/youth'
@@ -257,16 +301,20 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/community'
     | '/discovery'
+    | '/feedback'
     | '/forgot-password'
     | '/log-opportunity'
     | '/login'
     | '/notifications'
+    | '/privacy'
     | '/progress'
     | '/register'
     | '/requests'
     | '/role-selection'
+    | '/settings'
     | '/messages/$id'
     | '/onboarding/professional'
     | '/onboarding/youth'
@@ -281,16 +329,20 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   CommunityRoute: typeof CommunityRoute
   DiscoveryRoute: typeof DiscoveryRoute
+  FeedbackRoute: typeof FeedbackRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   LogOpportunityRoute: typeof LogOpportunityRoute
   LoginRoute: typeof LoginRoute
   NotificationsRoute: typeof NotificationsRoute
+  PrivacyRoute: typeof PrivacyRoute
   ProgressRoute: typeof ProgressRoute
   RegisterRoute: typeof RegisterRoute
   RequestsRoute: typeof RequestsRoute
   RoleSelectionRoute: typeof RoleSelectionRoute
+  SettingsRoute: typeof SettingsRoute
   MessagesIdRoute: typeof MessagesIdRoute
   OnboardingProfessionalRoute: typeof OnboardingProfessionalRoute
   OnboardingYouthRoute: typeof OnboardingYouthRoute
@@ -312,6 +364,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/community': {
       id: '/community'
       path: '/community'
@@ -324,6 +383,13 @@ declare module '@tanstack/react-router' {
       path: '/discovery'
       fullPath: '/discovery'
       preLoaderRoute: typeof DiscoveryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/feedback': {
+      id: '/feedback'
+      path: '/feedback'
+      fullPath: '/feedback'
+      preLoaderRoute: typeof FeedbackRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/forgot-password': {
@@ -354,6 +420,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NotificationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/progress': {
       id: '/progress'
       path: '/progress'
@@ -380,6 +453,13 @@ declare module '@tanstack/react-router' {
       path: '/role-selection'
       fullPath: '/role-selection'
       preLoaderRoute: typeof RoleSelectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/messages/': {
@@ -457,16 +537,20 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   CommunityRoute: CommunityRoute,
   DiscoveryRoute: DiscoveryRoute,
+  FeedbackRoute: FeedbackRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
   LogOpportunityRoute: LogOpportunityRoute,
   LoginRoute: LoginRoute,
   NotificationsRoute: NotificationsRoute,
+  PrivacyRoute: PrivacyRoute,
   ProgressRoute: ProgressRoute,
   RegisterRoute: RegisterRoute,
   RequestsRoute: RequestsRoute,
   RoleSelectionRoute: RoleSelectionRoute,
+  SettingsRoute: SettingsRoute,
   MessagesIdRoute: MessagesIdRoute,
   OnboardingProfessionalRoute: OnboardingProfessionalRoute,
   OnboardingYouthRoute: OnboardingYouthRoute,
