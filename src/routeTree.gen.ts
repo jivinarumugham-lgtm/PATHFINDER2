@@ -21,6 +21,7 @@ import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as RequestsRouteImport } from './routes/requests'
 import { Route as RoleSelectionRouteImport } from './routes/role-selection'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as MessagesIndexRouteImport } from './routes/messages.index'
 import { Route as MessagesIdRouteImport } from './routes/messages.$id'
 import { Route as OnboardingProfessionalRouteImport } from './routes/onboarding.professional'
@@ -92,6 +93,11 @@ const RoleSelectionRoute = RoleSelectionRouteImport.update({
   path: '/role-selection',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MessagesIndexRoute = MessagesIndexRouteImport.update({
   id: '/messages/',
   path: '/messages/',
@@ -156,6 +162,7 @@ export interface FileRoutesByFullPath {
   '/register': typeof RegisterRoute
   '/requests': typeof RequestsRoute
   '/role-selection': typeof RoleSelectionRoute
+  '/settings': typeof SettingsRoute
   '/messages/$id': typeof MessagesIdRoute
   '/onboarding/professional': typeof OnboardingProfessionalRoute
   '/onboarding/youth': typeof OnboardingYouthRoute
@@ -180,6 +187,7 @@ export interface FileRoutesByTo {
   '/register': typeof RegisterRoute
   '/requests': typeof RequestsRoute
   '/role-selection': typeof RoleSelectionRoute
+  '/settings': typeof SettingsRoute
   '/messages/$id': typeof MessagesIdRoute
   '/onboarding/professional': typeof OnboardingProfessionalRoute
   '/onboarding/youth': typeof OnboardingYouthRoute
@@ -205,6 +213,7 @@ export interface FileRoutesById {
   '/register': typeof RegisterRoute
   '/requests': typeof RequestsRoute
   '/role-selection': typeof RoleSelectionRoute
+  '/settings': typeof SettingsRoute
   '/messages/$id': typeof MessagesIdRoute
   '/onboarding/professional': typeof OnboardingProfessionalRoute
   '/onboarding/youth': typeof OnboardingYouthRoute
@@ -231,6 +240,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/requests'
     | '/role-selection'
+    | '/settings'
     | '/messages/$id'
     | '/onboarding/professional'
     | '/onboarding/youth'
@@ -255,6 +265,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/requests'
     | '/role-selection'
+    | '/settings'
     | '/messages/$id'
     | '/onboarding/professional'
     | '/onboarding/youth'
@@ -279,6 +290,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/requests'
     | '/role-selection'
+    | '/settings'
     | '/messages/$id'
     | '/onboarding/professional'
     | '/onboarding/youth'
@@ -304,6 +316,7 @@ export interface RootRouteChildren {
   RegisterRoute: typeof RegisterRoute
   RequestsRoute: typeof RequestsRoute
   RoleSelectionRoute: typeof RoleSelectionRoute
+  SettingsRoute: typeof SettingsRoute
   MessagesIdRoute: typeof MessagesIdRoute
   OnboardingProfessionalRoute: typeof OnboardingProfessionalRoute
   OnboardingYouthRoute: typeof OnboardingYouthRoute
@@ -402,6 +415,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RoleSelectionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/messages/': {
       id: '/messages/'
       path: '/messages'
@@ -488,6 +508,7 @@ const rootRouteChildren: RootRouteChildren = {
   RegisterRoute: RegisterRoute,
   RequestsRoute: RequestsRoute,
   RoleSelectionRoute: RoleSelectionRoute,
+  SettingsRoute: SettingsRoute,
   MessagesIdRoute: MessagesIdRoute,
   OnboardingProfessionalRoute: OnboardingProfessionalRoute,
   OnboardingYouthRoute: OnboardingYouthRoute,
